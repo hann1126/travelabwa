@@ -19,7 +19,7 @@ class PackageTour extends Model
         'about',
         'location',
         'price',
-        'days',
+        'day',
         'category_id',
     ];
     public function category(){

@@ -23,7 +23,7 @@ class UpdateCategoryRequest extends FormRequest
     {
         return [
             //
-            'name'=> ['required', 'sting', 'max:225'],
+            'name'=> ['required', 'string', 'max:225'],
             'icon'=> ['sometimes', 'image', 'mimes:png,jpg,jpeg'],
         ];
     }

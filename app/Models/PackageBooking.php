@@ -12,34 +12,34 @@ class PackageBooking extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'pack_tour_id',
-        'user_is',
+        'package_tour_id',
+        'user_id',
         'quantity',
-        'star_date',
+        'start_date',
         'end_date',
         'total_amount',
         'is_paid',
         'proof',
-        'pack_bank_id',
+        'package_bank_id',
         'sub_total',
         'tax',
         'insurance',
     ];
 
     protected $casts = [
-        'star_date'=>'date',
-        'end_date'=>'date',
+        'start_date'=>'datetime',
+        'end_date'=>'datetime',
     ];
 
-    public function curtumer(){
-        return $this->belongsTo(user::class);
+    public function customer(){
+        return $this->belongsTo(user::class, 'user_id');
     }
 
     public function tour(){
-        return $this->belongsTo(PackageTour::class);
+        return $this->belongsTo(PackageTour::class, 'package_tour_id');
     }
 
     public function bank(){
-        return $this->belongsTo(PackageBank::class);
+        return $this->belongsTo(PackageBank::class, 'package_bank_id');
     }
 }

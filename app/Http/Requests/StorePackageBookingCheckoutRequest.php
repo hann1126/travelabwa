@@ -23,7 +23,7 @@ class StorePackageBookingCheckoutRequest extends FormRequest
     {
         return [
             //
-            'proof'=> ['require','image','mimes:png,jpg,jpeg']
+            'proof'=> ['required','image','mimes:png,jpg,jpeg']
         ];
     }
 }

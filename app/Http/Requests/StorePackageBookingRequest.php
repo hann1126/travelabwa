@@ -23,8 +23,8 @@ class StorePackageBookingRequest extends FormRequest
     {
         return [
             //
-            'quantity'=> ['require','integer'],
-            'star_date'=> ['require','date','after:today'],
+            'quantity'=> ['required','integer'],
+            'start_date'=> ['required','date','after:today'],
         ];
     }
 }

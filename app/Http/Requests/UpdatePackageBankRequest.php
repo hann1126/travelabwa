@@ -23,9 +23,9 @@ class UpdatePackageBankRequest extends FormRequest
     {
         return [
             //
-            'bank_name'=> ['required', 'sting', 'max:225'],
-            'bank_accoun_name'=> ['required', 'sting', 'max:225'],
-            'bank_account_number'=> ['required', 'sting', 'max:225'],
+            'bank_name'=> ['required', 'string', 'max:225'],
+            'bank_account_name'=> ['required', 'string', 'max:225'],
+            'bank_account_number'=> ['required', 'string', 'max:225'],
             'logo'=> ['sometimes', 'image', 'mimes:png,jpg,jpeg']
         ];
     }

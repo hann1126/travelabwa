@@ -26,15 +26,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    route::middleware('can: checkout package')-> group(function() {
-        route::get('/book/{packageTour:slug}', [FrontControler::class, 'book'])
+
+ route::get('/book/{packageTour:slug}', [FrontControler::class, 'book'])
         ->name('front.book');
 
         route::post('/book/save/{packageTour:slug}', [FrontControler::class, 'book_store'])
         ->name('front.book.store');
 
         route::get('/book/choose-bank/{packageBooking}/', [FrontControler::class, 'choose_bank'])
-        ->name('front.choose');
+        ->name('front.choose_bank');
 
         route::patch('/book/choose-bank{packageBooking}/save', [FrontControler::class, 'choose_bank_store'])
         ->name('front.choose_bank_store');
@@ -45,18 +45,21 @@ Route::middleware('auth')->group(function () {
         route::patch('/book/payment/{packageBooking}/save', [FrontControler::class, 'book_payment_store'])
         ->name('front.book_payment_store');
 
-        route::get('/book-finis', [FrontControler::class, 'book_finis'])
-        ->name('front.book_finis');
-    });
+        route::get('/book-finish', [FrontControler::class, 'book_finish'])
+        ->name('front.book_finish');
+
+    // route::middleware(middleware: 'can: checkout package')-> group(function() {
+       
+    // });
     
     Route::prefix('dashboard')->name('dashboard.')->group(function(){
 
-        Route::middleware('can:view oreder')->group(function() {
+        Route::middleware('can:view order')->group(function() {
             Route::get('/my-booking', [DashboardController::class, 'my_booking'])
             ->name('bookings');
 
             Route::get('/my-booking/details/{packageBooking}', [DashboardController::class, 'booking_details'])
-            ->name('bookings.details');
+            ->name('bookings_details');
         });
     });
 

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
 
 class UpdatePackageTourRequest extends FormRequest
 {
@@ -23,14 +25,17 @@ class UpdatePackageTourRequest extends FormRequest
     {
         return [
             //
-            'name'=> ['required', 'sting', 'max:225'],
-            'location'=> ['required', 'sting', 'max:225'],
+            'name'=> ['required', 'string', 'max:225'],
+            'location'=> ['required', 'string', 'max:225'],
             'thumbnail'=> ['sometimes', 'image', 'mimes:png,jpg,jpeg'],
             'category_id'=> ['required', 'integer'],
             'price'=> ['required', 'integer'],
             'day'=> ['required', 'integer'],
-            'about'=> ['required', 'sting', 'max:65535'],
-            'pack_photos.*'=> ['sometimes', 'image', 'mimes:png,jpg,jpeg']
+            'about'=> ['required', 'string', 'max:65535'],
+            'package_photos.*'=> ['sometimes', 'image', 'mimes:png,jpg,jpeg'],
+             'slug' => [
+            Rule::unique('package_tours', 'slug')->ignore($this->route('package_tour')->id),
+        ],
 
         ];
     }
